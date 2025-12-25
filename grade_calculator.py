@@ -1,12 +1,20 @@
-# Beginner Student Grade Calculator 
+# ================================
+# Student Grade Calculator v2
+# ================================
 
-# Step 1: Ask for each score
-math = float(input("Enter your Math score: "))
-english = float(input("Enter your English score: "))
-science = float(input("Enter your Science score: "))
-history = float(input("Enter your History score: "))
+print("\nWelcome to the Student Grade Calculator\n")
 
-# Step 2: Store them in a dictionary
+# Step 1: Get student name and clean it
+raw_name = input("Enter student name: ")
+student_name = raw_name.strip().title()
+
+# Step 2: Ask for scores
+math = float(input("Enter Math score: "))
+english = float(input("Enter English score: "))
+science = float(input("Enter Science score: "))
+history = float(input("Enter History score: "))
+
+# Step 3: Store scores in a dictionary (JSON-style data)
 scores = {
     "Math": math,
     "English": english,
@@ -14,17 +22,24 @@ scores = {
     "History": history
 }
 
-# Step 3: Calculate the average
+# Step 4: Calculate average
 average = (math + english + science + history) / 4
 
-# Step 4: Put grade letters in a list based on ranges
-# We aren't calculating the grade using if.3
-# Instead, we decide the grade AFTER running the program.
+# Step 5: Decide grade using conditional logic
+if average >= 90:
+    grade = "A"
+elif average >= 80:
+    grade = "B"
+elif average >= 70:
+    grade = "C"
+elif average >= 60:
+    grade = "D"
+else:
+    grade = "F"
 
-grades = ["A", "B", "C", "D", "F"]  # Just storing options
-
-# Step 5: Show results (YOU choose the grade by looking at the number)
+# Step 6: Output results
 print("\n--- RESULTS ---")
+print("Student:", student_name)
 print("Scores:", scores)
-print("Average:", average)
-print("Pick the correct grade from this list based on your teacher's rules:", grades)
+print("Average:", round(average, 2))
+print("Final Grade:", grade)
